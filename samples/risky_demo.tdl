@@ -1,0 +1,27 @@
+;; risky_demo.tdl — DEMONSTRATION FIXTURE (non-functional, harmless).
+;;
+;; Purpose: show what a FLAGGED scanner report looks like and exercise every
+;; detection feature. This file CANNOT exfiltrate anything: the only "endpoints"
+;; are the reserved, non-resolving domain example.invalid, and the logic is just
+;; the flagged *tokens* — there is no real data-harvesting code. It's the TDL
+;; equivalent of an EICAR test file: it exists to trip the detector, nothing else.
+
+;; --- autorun (pack: persistence) ---
+[System : Startup]
+    ;; runs without the user asking
+
+;; --- data-access + network in ONE block => data-flow pairing (FLOW001) ---
+[Function : Demo_Flagged]
+    10 : SET  : Src : $$CmpMailingName          ;; identity field  (DAT002)
+    20 : WALK COLLECTION : Ledger               ;; sensitive read  (DAT001)
+    30 : SET  : Out : $$HttpGet:@@Endpoint:""    ;; outbound call   (NET001)
+    40 : SET  : U   : "https://collect.example.invalid/x"  ;; URL literal (NET005)
+
+;; --- obfuscation the deobfuscator will decode (OBF001 + NET005-from-decoded) ---
+;; The char-codes below spell a harmless example.invalid URL to prove decoding.
+[Function : Demo_Hidden]
+    10 : SET : H : $$StrByCharCode:104 + $$StrByCharCode:116 + $$StrByCharCode:116 + $$StrByCharCode:112 + $$StrByCharCode:58 + $$StrByCharCode:47 + $$StrByCharCode:47 + $$StrByCharCode:120 + $$StrByCharCode:46 + $$StrByCharCode:105 + $$StrByCharCode:110 + $$StrByCharCode:118 + $$StrByCharCode:97 + $$StrByCharCode:108 + $$StrByCharCode:105 + $$StrByCharCode:100
+
+;; --- licensing/config touch (pack: licensing-bypass) ---
+[Function : Demo_License]
+    10 : SET : Cfg : "tally.ini"                 ;; config touch (LIC001)

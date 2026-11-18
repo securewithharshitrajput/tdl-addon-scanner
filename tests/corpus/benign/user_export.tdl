@@ -1,0 +1,7 @@
+;; A legitimate, user-initiated export button. This DOES write a file, so the
+;; scanner should note it (filesystem) but the verdict must stay at CAUTION, not
+;; SUSPICIOUS/DANGEROUS — there is no autorun, no network, no obfuscation.
+[Button : CS Export Register]
+    Title  : "Export Register"
+    Key    : Alt + E
+    Action : Export Report : CS Sales Register : ASCII

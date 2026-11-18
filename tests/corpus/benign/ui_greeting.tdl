@@ -1,0 +1,5 @@
+;; A harmless UI customization — adds a greeting field. Should scan CLEAN.
+[#Field : CS Greeting]
+    Set as : "Welcome to the sales screen"
+    Style   : Normal Bold
+    Color   : Blue

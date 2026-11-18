@@ -1,0 +1,14 @@
+;; clean_addon.tdl
+;; A deliberately harmless sample add-on used to show a CLEAN scanner pass.
+;; It only adds a greeting field to a form. No network, no file writes,
+;; no startup hooks, no sensitive data access.
+
+[#Part : CS_HelloPart]
+    Add : Line : CS_HelloLine
+
+[Line : CS_HelloLine]
+    Field : CS_HelloField
+
+[Field : CS_HelloField]
+    Set as : "Hello — this add-on does nothing risky."
+    Style   : Normal Bold

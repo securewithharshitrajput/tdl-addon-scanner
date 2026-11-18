@@ -1,0 +1,4 @@
+# The scanner itself is stdlib-only — no install needed to run tdl_scanner.py.
+# These are only for the optional lab listener and the test suite.
+flask>=3.0
+pytest>=8.0

@@ -1,0 +1,20 @@
+[project]
+name = "tdl-addon-scanner"
+version = "0.3.0"
+description = "Defensive static safety scanner for Tally TDL add-ons"
+requires-python = ">=3.11"
+readme = "README.md"
+
+[project.scripts]
+tdl-scanner = "tdl_scanner:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+warn_unused_ignores = true
+# The codebase is duck-typed in places; keep type-checking advisory, not strict.
+check_untyped_defs = true

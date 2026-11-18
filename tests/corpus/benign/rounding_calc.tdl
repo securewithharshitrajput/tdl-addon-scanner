@@ -1,0 +1,4 @@
+;; A harmless calculation helper — rounds an amount. Should scan CLEAN.
+[Function : CS Round Amount]
+    Variable : InValue : Amount
+    10 : RETURN : $$Round:##InValue:1

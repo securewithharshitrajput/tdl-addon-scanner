@@ -1,0 +1,9 @@
+;; A harmless report layout tweak — adds two columns. Should scan CLEAN.
+[#Part : CS Item Cols]
+    Add   : Line : CS Item Line
+[Line : CS Item Line]
+    Fields : CS Item Name, CS Item Rate
+    Space Left : 2
+[Field : CS Item Name]
+    Set as : "Item"
+    Width  : 30
